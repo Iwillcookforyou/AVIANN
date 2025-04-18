@@ -1,0 +1,321 @@
+// Variables
+$primary-color: #3498db;
+$secondary-color: #2c3e50;
+$text-color: #333;
+$light-gray: #f9f9f9;
+$white: #fff;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin card-shadow {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+// Reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: $text-color;
+}
+
+// Navigation
+.navbar {
+  background-color: $white;
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  .logo h1 {
+    color: $secondary-color;
+    font-size: 1.5rem;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+
+    li {
+      margin-left: 2rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: $secondary-color;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+// Hero Section
+.hero {
+  background: linear-gradient(rgba($secondary-color, 0.8), rgba($secondary-color, 0.8)),
+              url('https://via.placeholder.com/1920x1080') center/cover;
+  height: 100vh;
+  @include flex-center;
+  text-align: center;
+  color: $white;
+  padding: 0 1rem;
+
+  .hero-content {
+    max-width: 800px;
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+// Buttons
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: $primary-color;
+  color: $white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+// Featured Section
+.featured-section {
+  padding: 5rem 5%;
+  background-color: $light-gray;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: $secondary-color;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .featured-card {
+    background: $white;
+    border-radius: 10px;
+    overflow: hidden;
+    @include card-shadow;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    h3 {
+      padding: 1rem;
+      color: $secondary-color;
+    }
+
+    p {
+      padding: 0 1rem 1rem;
+      color: lighten($text-color, 20%);
+    }
+  }
+}
+
+// News Section
+.news-section {
+  padding: 5rem 5%;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: $secondary-color;
+  }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .news-card {
+    background: $white;
+    border-radius: 10px;
+    overflow: hidden;
+    @include card-shadow;
+
+    .news-content {
+      padding: 1.5rem;
+
+      h3 {
+        color: $secondary-color;
+        margin-bottom: 0.5rem;
+      }
+
+      .date {
+        color: lighten($text-color, 20%);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+// Newsletter Section
+.newsletter-section {
+  background-color: $secondary-color;
+  color: $white;
+  padding: 5rem 5%;
+  text-align: center;
+
+  .newsletter-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    input {
+      flex: 1;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 0.8rem 2rem;
+      background-color: $primary-color;
+      color: $white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}
+
+// Footer
+.footer {
+  background-color: $secondary-color;
+  color: $white;
+  padding: 4rem 5% 2rem;
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-section {
+    h3 {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      color: $white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba($white, 0.1);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+}
+
+// Burger Menu
+.burger {
+  display: none;
+  cursor: pointer;
+
+  div {
+    width: 25px;
+    height: 3px;
+    background-color: $secondary-color;
+    margin: 5px;
+    transition: all 0.3s ease;
+  }
+} 

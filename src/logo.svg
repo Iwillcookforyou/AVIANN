@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="800px" viewBox="0 0 800 800" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+            <stop offset="25%" style="stop-color:#E0E0E0;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#FFFFFF;stop-opacity:1" />
+            <stop offset="75%" style="stop-color:#A0A0A0;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Stylized 'A' -->
+    <path d="M400,100 L600,700 L500,700 L450,550 L350,550 L300,700 L200,700 L400,100 Z
+             M400,250 L350,450 L450,450 L400,250 Z" 
+          fill="url(#silverGradient)"/>
+    
+    <!-- Cockatoo Head -->
+    <path d="M420,150 
+             C460,150 490,170 510,200
+             C530,230 540,270 530,310
+             C525,330 515,350 500,365
+             C485,380 465,390 440,390
+             C415,390 395,380 380,365
+             C365,350 355,330 350,310
+             C340,270 350,230 370,200
+             C390,170 420,150 420,150 Z
+             M450,220
+             C450,220 460,230 465,245
+             C470,260 470,280 465,295
+             C460,310 450,320 435,320
+             C420,320 410,310 405,295
+             C400,280 400,260 405,245
+             C410,230 420,220 420,220
+             L450,220 Z" 
+          fill="url(#silverGradient)"/>
+    
+    <!-- Crest -->
+    <path d="M420,150
+             C420,150 440,130 450,100
+             C460,70 455,50 450,40
+             L440,150
+             M400,150
+             C400,150 380,130 370,100
+             C360,70 365,50 370,40
+             L380,150" 
+          fill="url(#silverGradient)"/>
+</svg> 
