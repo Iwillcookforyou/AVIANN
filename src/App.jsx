@@ -1060,7 +1060,7 @@ const App = () => {
                 </StyledTerminal>
             </Container>
             <SocialButton 
-                href="https://x.com/AvianAnalytics"
+                href="https://x.com/AvianAnalyticss"
                 target="_blank"
                 rel="noopener noreferrer"
             >
