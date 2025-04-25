@@ -21,7 +21,7 @@ const StyledTerminal = styled.div`
   overflow: hidden;
 
   &::before {
-    content: 'AVIAN TESTING INTERFACE v2.1.0';
+    content: 'AVIAN TESTING INTERFACE v2.1.0 | Contract: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e';
     position: absolute;
     top: 0;
     left: 0;
