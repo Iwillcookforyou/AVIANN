@@ -21,7 +21,7 @@ const StyledTerminal = styled.div`
   overflow: hidden;
 
   &::before {
-    content: 'AVIAN TESTING INTERFACE v2.1.0 | Contract Address: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e';
+    content: 'AVIAN TESTING INTERFACE v2.1.0 | Contract Address: ';
     position: absolute;
     top: 0;
     left: 0;
@@ -537,24 +537,6 @@ const StyledInfoBox = styled.div`
   }
 `;
 
-const SocialButton = styled.a`
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  z-index: 1000;
-
-  svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  &:hover {
-    color: white;
-  }
-`;
-
 const App = () => {
     const [activeTab, setActiveTab] = useState('control');
     const [displayedInfo, setDisplayedInfo] = useState('');
@@ -1059,15 +1041,6 @@ const App = () => {
                     </div>
                 </StyledTerminal>
             </Container>
-            <SocialButton 
-                href="https://x.com/AvianAnalyticss"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
-                </svg>
-            </SocialButton>
         </>
     );
 };
