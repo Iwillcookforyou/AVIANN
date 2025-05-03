@@ -9,6 +9,22 @@ const Logo = styled.img`
   width: auto;
 `;
 
+const XLogo = styled.a`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #ffffff;
+  font-size: 24px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+
+  &:hover {
+    color: #1DA1F2;
+    transform: scale(1.1);
+  }
+`;
+
 const AppContainer = styled.div`
   height: 100vh;
   width: 100vw;
@@ -630,6 +646,9 @@ const App = () => {
     return (
     <AppContainer>
         <Logo src="/whitelogo.png" alt="Aviatrax Logo" />
+        <XLogo href="https://x.com/Aviatraxx" target="_blank" rel="noopener noreferrer">
+            𝕏
+        </XLogo>
         <MainBox>
             <LabelContainer>
                 <Label
