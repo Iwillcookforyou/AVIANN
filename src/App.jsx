@@ -648,14 +648,7 @@ const App = () => {
 
     return (
     <AppContainer>
-        <div className="flex items-center">
-            <img 
-                src="/whitelogo.png" 
-                alt="Aviatrax Logo" 
-                className="h-8 w-auto mr-2"
-            />
-            <span className="text-xl font-bold text-white">Aviatrax</span>
-        </div>
+        <Logo src="/whitelogo.png" alt="Aviatrax Logo" />
         <XLogo href="https://x.com/Aviatraxx" target="_blank" rel="noopener noreferrer">
             𝕏
         </XLogo>
