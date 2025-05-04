@@ -14,10 +14,13 @@ const XLogo = styled.a`
   top: 20px;
   right: 20px;
   color: #ffffff;
-  font-size: 24px;
+  font-size: 32px;
   text-decoration: none;
   transition: all 0.3s ease;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  height: 40px;
 
   &:hover {
     color: #1DA1F2;
@@ -645,7 +648,14 @@ const App = () => {
 
     return (
     <AppContainer>
-        <Logo src="/whitelogo.png" alt="Aviatrax Logo" />
+        <div className="flex items-center">
+            <img 
+                src="/whitelogo.png" 
+                alt="Aviatrax Logo" 
+                className="h-8 w-auto mr-2"
+            />
+            <span className="text-xl font-bold text-white">Aviatrax</span>
+        </div>
         <XLogo href="https://x.com/Aviatraxx" target="_blank" rel="noopener noreferrer">
             𝕏
         </XLogo>
