@@ -1,5 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const glitch = keyframes`
+  0% { transform: translate(0) skew(0deg); }
+  20% { transform: translate(-5px, 5px) skew(5deg); }
+  40% { transform: translate(5px, -5px) skew(-5deg); }
+  60% { transform: translate(-5px, 5px) skew(5deg); }
+  80% { transform: translate(5px, -5px) skew(-5deg); }
+  100% { transform: translate(0) skew(0deg); }
+`;
+
+const float = keyframes`
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+`;
+
+const distort = keyframes`
+  0% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  25% { clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%); }
+  50% { clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%); }
+  75% { clip-path: polygon(5% 0, 95% 0, 100% 100%, 0 100%); }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+`;
 
 const Logo = styled.img`
   position: absolute;
@@ -7,6 +30,7 @@ const Logo = styled.img`
   left: 20px;
   height: 40px;
   width: auto;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
 `;
 
 const XLogo = styled.a`
@@ -21,164 +45,168 @@ const XLogo = styled.a`
   display: flex;
   align-items: center;
   height: 40px;
+  transform: rotate(-5deg);
 
   &:hover {
     color: #1DA1F2;
-    transform: scale(1.1);
+    transform: rotate(5deg) scale(1.1);
   }
 `;
 
 const AppContainer = styled.div`
   height: 100vh;
   width: 100vw;
-  background: #0a0a0a;
-  color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  background: #1a1a1a;
+  color: #d4d4d4;
+  font-family: 'Courier New', monospace;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
   position: relative;
+  overflow: hidden;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
 `;
 
 const MainBox = styled.div`
-  width: 1200px;
-  height: 800px;
-  background: rgba(15, 15, 15, 0.8);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 90vw;
+  height: 90vh;
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 250px 1fr;
   overflow: hidden;
+  position: relative;
+  box-shadow: 2px 2px 0 #000;
 `;
 
 const LabelContainer = styled.div`
-  background: rgba(20, 20, 20, 0.8);
-  padding: 2rem 1rem;
+  background: #222;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 1.5rem;
+  border-right: 1px solid #3a3a3a;
 `;
 
 const Label = styled.div`
-  color: ${props => props.active ? '#ffffff' : 'rgba(255, 255, 255, 0.7)'};
-  font-size: 14px;
-  font-weight: 500;
+  color: ${props => props.active ? '#fff' : '#666'};
+  font-size: 16px;
   padding: 1rem;
-  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  background: ${props => props.active ? 'rgba(255, 255, 255, 0.1)' : 'transparent'};
+  background: ${props => props.active ? '#333' : 'transparent'};
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
+  border-left: 2px solid ${props => props.active ? '#666' : 'transparent'};
+  transition: all 0.2s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    background: #333;
+    color: #fff;
   }
 `;
 
 const LiveIndicator = styled.div`
   width: 8px;
   height: 8px;
-  background: #ff4444;
+  background: #f00;
   border-radius: 50%;
   margin-right: 8px;
-  animation: pulse 2s infinite;
-
-  @keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-  }
 `;
 
 const ContentArea = styled.div`
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   height: 100%;
   overflow: hidden;
 `;
 
 const ContentTitle = styled.h2`
   font-size: 24px;
-  color: #ffffff;
-  margin-bottom: 1rem;
-`;
+  color: #fff;
+  margin-bottom: 2rem;
+  font-weight: normal;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
 
-const Metric = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.6rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-`;
-
-const MetricLabel = styled.span`
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
-`;
-
-const MetricValue = styled.span`
-        color: #ffffff;
-  font-weight: 500;
-`;
-
-const ControlBox = styled.div`
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  padding: 1.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  transition: all 0.3s ease;
-  height: 300px;
-  overflow: hidden;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.2);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #666;
   }
-`;
-
-const ControlBoxTitle = styled.h3`
-  font-size: 18px;
-  color: #ffffff;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
 `;
 
 const ControlGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin: 2rem;
-  height: 650px;
+  gap: 2rem;
+  height: 100%;
+`;
+
+const ControlBox = styled.div`
+  background: #222;
+  padding: 1.5rem;
+  border: 1px solid #3a3a3a;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #252525;
+  }
+`;
+
+const ControlBoxTitle = styled.h3`
+  font-size: 18px;
+  color: #fff;
+  margin: 0;
+  display: flex;
   align-items: center;
+  gap: 1rem;
+  font-weight: normal;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #3a3a3a;
+`;
+
+const Metric = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  position: relative;
+`;
+
+const MetricLabel = styled.span`
+  color: #666;
+  font-size: 14px;
+`;
+
+const MetricValue = styled.span`
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
 `;
 
 const LiveValue = styled.span`
-        color: #ffffff;
-  font-size: 18px;
-  font-weight: 600;
-  animation: pulse 2s infinite;
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
-  }
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
 `;
 
 const App = () => {
@@ -648,7 +676,13 @@ const App = () => {
 
     return (
     <AppContainer>
-        <Logo src="/whitelogo.png" alt="Aviatrax Logo" />
+        <div className="flex items-center">
+            <img 
+                src="/whitelogo.png" 
+                alt="Aviatrax Logo" 
+                className="h-8 w-auto mr-2"
+            />
+        </div>
         <XLogo href="https://x.com/Aviatraxx" target="_blank" rel="noopener noreferrer">
             𝕏
         </XLogo>
