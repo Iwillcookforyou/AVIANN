@@ -669,7 +669,7 @@ const App = () => {
         <div className="flex items-center">
             <img 
                 src="/whitelogo.png" 
-                alt="Aviatrax Logo" 
+                alt="Avian Analytics Logo" 
                 className="h-3.5 w-auto mr-2"
                 style={{ position: 'absolute', left: '-15rem', top: '-35px' }}
             />

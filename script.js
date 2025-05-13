@@ -42,7 +42,7 @@ floatingElements.forEach(element => {
 // Typing effect
 const typingText = document.querySelector('.typing-text');
 const messages = [
-    "Welcome to Aviatrax Research Lab",
+    "Welcome to Avian Analytics Research Lab",
     "Studying bird behavior and migration patterns",
     "Advancing avian science through data analysis",
     "Protecting bird habitats worldwide"
@@ -388,7 +388,7 @@ function switchTab(tabId) {
     if (explanation) {
         switch(tabId) {
             case 'home':
-                explanation.textContent = 'Welcome to Aviatrax - Your gateway to bird intelligence and research.';
+                explanation.textContent = 'Welcome to Avian Analytics - Your gateway to bird intelligence and research.';
                 break;
             case 'mission':
                 explanation.textContent = 'Discover our mission to advance avian research and conservation through data-driven insights.';
