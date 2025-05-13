@@ -635,7 +635,7 @@ const App = () => {
                   padding: '20px'
                 }}>
                   <iframe
-                    src="https://player.kick.com/aviatrax"
+                    src="https://player.kick.com/aviananalytics"
                     style={{
                       width: '100%',
                       height: '100%',
@@ -674,7 +674,7 @@ const App = () => {
                 style={{ position: 'absolute', left: '-15rem', top: '-35px' }}
             />
         </div>
-        <XLogo href="https://x.com/Aviatraxx" target="_blank" rel="noopener noreferrer">
+        <XLogo href="https://x.com/AnalyticsAvian" target="_blank" rel="noopener noreferrer">
             𝕏
         </XLogo>
         <MainBox>
